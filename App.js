@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { } from 'react-native';
+import { useFonts } from 'expo-font';
+import LoginScreen from './screens/auth/LoginScreen';
 
 export default function App() {
+
+  const [loaded] = useFonts({
+                OpenSans: require('./assets/fonts/OpenSans-Regular.ttf'),
+                OpenSansBold: require('./assets/fonts/OpenSans-Bold.ttf'),
+                OpenSansLight: require('./assets/fonts/OpenSans-Light.ttf'),
+                OpenSansMedium: require('./assets/fonts/OpenSans-Medium.ttf'),
+                OpenSansSemiBold: require('./assets/fonts/OpenSans-SemiBold.ttf'),
+                OpenSansExtraBold: require('./assets/fonts/OpenSans-ExtraBold.ttf'),
+            });
+
+  if (!loaded) {
+      return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+        <LoginScreen/>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
